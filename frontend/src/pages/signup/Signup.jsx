@@ -1,6 +1,24 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { Link } from 'react-router-dom';
+import useSignup from '../../hooks/useSignup';
 
 const Signup = () => {
+
+  const [inputs, setInput] = useState({
+    name: '',
+    email: '',
+    password: '',
+    confirmpassword: '',
+    gender: ''
+  });
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    await signup(inputs);
+  }
+
+  const {loading, signup} = useSignup();
+
   return (
     <>
       <div className='flex flex-col items-center justify-center m-w-96 mx-auto w-96'>
@@ -11,31 +29,49 @@ const Signup = () => {
           <h2 className='text-lg py-4 font-semibold text-center text-gray-200'>
             User SignUp
           </h2>
-          <form>
+          <form onSubmit={handleSubmit}>
             <div className='py-3 text-center flex items-center justify-center gap-7'>
-              <span className='text-gray-200'>Male</span>
-               <input
-                type="checkbox"
-                className="toggle toggle-md border-yellow-400 bg-yellow-400 [--tglbg:gray] hover:bg-yellow-500"
-                 />
-                 <span className='text-gray-200'>Female</span>
+              <div className="form-control">
+                <label className="cursor-pointer label">
+                  <input type="checkbox" checked={inputs.gender === "male"} onChange={(e) => setInput({ ...inputs, gender: "male" })} className="checkbox checkbox-warning" />
+                  <span className="label-text"> Male</span>
+                </label>
+              </div>
+              <div className="form-control">
+                <label className="cursor-pointer label">
+                  <input type="checkbox" checked={inputs.gender === "female"} onChange={(e) => setInput({ ...inputs, gender: "female" })} className="checkbox checkbox-warning" />
+                  <span className="label-text"> Female</span>
+                </label>
+              </div>
             </div>
             <div className='py-3'>
-              <input type='text' placeholder='Enter Name' className='w-full input input-bordered input-warning h-10' />
+              <input type='text' placeholder='Enter Name' className='w-full input input-bordered input-warning h-10'
+                value={inputs.name}
+                onChange={(e) => setInput({ ...inputs, name: e.target.value })}
+              />
             </div>
             <div className='py-3'>
-              <input type='email' placeholder='Enter Email' className='w-full input input-bordered input-warning h-10' />
+              <input type='email' placeholder='Enter Email' className='w-full input input-bordered input-warning h-10'
+                value={inputs.email}
+                onChange={(e) => setInput({ ...inputs, email: e.target.value })}
+              />
             </div>
             <div className='py-3'>
-              <input type='password' placeholder='Enter Password' className='w-full input input-bordered input-warning h-10' />
+              <input type='password' placeholder='Enter Password' className='w-full input input-bordered input-warning h-10'
+                value={inputs.password}
+                onChange={(e) => setInput({ ...inputs, password: e.target.value })}
+              />
             </div>
             <div className='py-3'>
-              <input type='password' placeholder='Confirm Password' className='w-full input input-bordered input-warning h-10' />
+              <input type='password' placeholder='Confirm Password' className='w-full input input-bordered input-warning h-10'
+                value={inputs.confirmpassword}
+                onChange={(e) => setInput({ ...inputs, confirmpassword: e.target.value })}
+              />
             </div>
             <div className='py-3 text-center'>
-              <a href="#" className='text-sm hover:underline hover:text-yellow-400 inline-block'>
+              <Link to="/login" className='text-sm hover:underline hover:text-yellow-400 inline-block'>
                 Already SignedUp! Login?
-              </a>
+              </Link>
             </div>
             <div className='py-3 text-center'>
               <button className="btn btn-warning btn-sm">SignUp</button>
