@@ -1,12 +1,13 @@
 import React from 'react'
 
-const Chatitem = () => {
+const Chatitem = (props) => {
+    console.log("chatOne");
     return (
         <>
             <div className='flex gap-2 items-center hover:bg-sky-500 rounded p-2 py-1 cursor-pointer'>
                 <div className="avatar online">
                     <div className="w-16 rounded-xl">
-                        <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                        <img src={props.chatOne.picture} alt='User Avatar' />
                     </div>
                 </div>
                 <div className='flex flex-col flex-1'>

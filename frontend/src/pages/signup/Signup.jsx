@@ -17,7 +17,7 @@ const Signup = () => {
     await signup(inputs);
   }
 
-  const {loading, signup} = useSignup();
+  const { loading, signup } = useSignup();
 
   return (
     <>
@@ -74,7 +74,9 @@ const Signup = () => {
               </Link>
             </div>
             <div className='py-3 text-center'>
-              <button className="btn btn-warning btn-sm">SignUp</button>
+              <button className="btn btn-warning btn-sm" disabled={loading} >
+                {loading ? <span className='loading loading-dots'></span> : "SignUp"}
+              </button>
             </div>
           </form>
         </div >

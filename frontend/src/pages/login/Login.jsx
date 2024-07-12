@@ -1,7 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
+import useLogin from '../../hooks/useLogin';
 
 const Login = () => {
+
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const { loading, login } = useLogin();
+
+    const handleLogin = async (e) => {
+        e.preventDefault();
+        await login(email, password);
+    }
+
     return (
         <>
             <div className='flex flex-col items-center justify-center m-w-96 mx-auto w-96'>
@@ -12,12 +23,18 @@ const Login = () => {
                     <h2 className='text-lg py-4 font-semibold text-center text-gray-200'>
                         User Login
                     </h2>
-                    <form>
+                    <form onSubmit={handleLogin}>
                         <div className='py-3'>
-                            <input type='email' placeholder='Enter Email' className='w-full input input-bordered input-warning h-10' />
+                            <input type='email' placeholder='Enter Email' className='w-full input input-bordered input-warning h-10'
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                            />
                         </div>
                         <div className='py-3'>
-                            <input type='password' placeholder='Enter Password' className='w-full input input-bordered input-warning h-10' />
+                            <input type='password' placeholder='Enter Password' className='w-full input input-bordered input-warning h-10'
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                            />
                         </div>
                         <div className='py-3 text-center'>
                             <Link to="/signup" className='text-sm hover:underline hover:text-yellow-400 inline-block'>
@@ -25,7 +42,9 @@ const Login = () => {
                             </Link>
                         </div>
                         <div className='py-3 text-center'>
-                            <button className="btn btn-warning btn-sm">Login</button>
+                            <button className="btn btn-warning btn-sm" disabled={loading} >
+                                {loading ? <span className='loading loading-dots'></span> : "Login"}
+                            </button>
                         </div>
                     </form>
                 </div >

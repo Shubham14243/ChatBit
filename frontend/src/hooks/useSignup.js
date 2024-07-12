@@ -16,24 +16,22 @@ const useSignup = () => {
         setLoading(true);
         try{
 
-            const res = await fetch('/api/auth/signup', {
+            const res = await fetch('http://localhost:5000/api/auth/signup', {
                 method: "POST",
-                headers: {"Content-Type": "application/json"},
-                body: JSON.stringify({name, email, password, confirmpassword, gender})
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({name, email, password, confirmpassword, gender}),
+                credentials: 'include'
             })
 
-            const data = await JSON.parse(res);
-
-            console.log(data);
+            const data = await res.json();
 
             if(data.type === "error" || data.type === "failure") {
-                console.log(data);
                 throw new Error(data.message);
             }
 
-            localStorage.setItem("chatUser", JSON.stringify(data));
+            localStorage.setItem("chatUser", JSON.stringify(data.data));
 
-            setAuthUser(data);
+            setAuthUser(data.data);
 
         } catch(error) {
             toast.error(error.message);
