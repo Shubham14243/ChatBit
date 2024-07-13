@@ -10,11 +10,13 @@ const Chatlist = () => {
     <>
       <div className='py-2 flex flex-col overflow-auto'>
         {chat && chat.map((chatOne, idx) => {
-          <Chatitem
+          return(
+            <Chatitem
             key={chatOne._id}
-            chatOne={chatOne}
+            data={chatOne}
             lastIdx={idx === chat.length - 1}
           />
+          )
         })}
         {loading ? <span className="loading loading-infinity loading-lg text-warning"></span> : null}
       </div>

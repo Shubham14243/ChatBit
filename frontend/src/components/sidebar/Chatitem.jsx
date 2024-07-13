@@ -1,25 +1,34 @@
-import React from 'react'
+import React from 'react';
+import useChat from '../../zustand/useChat';
 
-const Chatitem = (props) => {
-    console.log("chatOne");
+const Chatitem = ({data, lastIdx}) => {
+    
+    const {selectedChat, setSelectedChat} = useChat();
+
+    const isSelected = selectedChat?._id === data._id;
+
     return (
         <>
-            <div className='flex gap-2 items-center hover:bg-sky-500 rounded p-2 py-1 cursor-pointer'>
+            <div className={`flex gap-2 items-center text-gray-200 hover:bg-yellow-500 hover:text-gray-900 rounded p-2 py-1 cursor-pointer
+                ${isSelected? "bg-yellow-500 text-gray-900" : null}
+                `}
+                onClick={() => setSelectedChat(data)}
+                >
                 <div className="avatar online">
-                    <div className="w-16 rounded-xl">
-                        <img src={props.chatOne.picture} alt='User Avatar' />
+                    <div className="w-12 rounded-xl">
+                        <img src={data.picture} alt='User Avatar' />
                     </div>
                 </div>
                 <div className='flex flex-col flex-1'>
                     <div className='flex gap-3 justify-between'>
-                        <p className='font-bold text-gray-200'>Shubham</p>
+                        <p className='font-bold'>{data.name}</p>
                         <span></span>
                     </div>
                 </div>
             </div>
-            <div className='divider my-0 py-0 h-1'></div>
+            {!lastIdx ? <div className='divider my-0 py-0 h-1'></div> : null}
         </>
     )
 }
 
-export default Chatitem
+export default Chatitem;
