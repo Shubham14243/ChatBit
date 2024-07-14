@@ -1,11 +1,13 @@
 import React from 'react';
 import useChat from '../../zustand/useChat';
+import { useSocketContext } from '../../context/SocketContext';
 
 const Chatitem = ({data, lastIdx}) => {
     
     const {selectedChat, setSelectedChat} = useChat();
-
     const isSelected = selectedChat?._id === data._id;
+    const {onlineUsers} = useSocketContext();
+    const isOnline = onlineUsers.includes(data._id);
 
     return (
         <>
@@ -14,7 +16,7 @@ const Chatitem = ({data, lastIdx}) => {
                 `}
                 onClick={() => setSelectedChat(data)}
                 >
-                <div className="avatar online">
+                <div className={`avatar ${isOnline ? "online": "offline"}`}>
                     <div className="w-12 rounded-xl">
                         <img src={data.picture} alt='User Avatar' />
                     </div>
