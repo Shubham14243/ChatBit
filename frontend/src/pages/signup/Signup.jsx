@@ -23,9 +23,16 @@ const Signup = () => {
     <>
       <div className='flex flex-col items-center justify-center m-w-96 mx-auto w-96'>
         <div className='w-full p-6 rounded-md shadow-xl bg-gray-800 bg-clip-padding bg-opacity-100'>
-          <h1 className='text-4xl py-3 font-semibold text-center text-gray-300'>
-            <span className='text-yellow-400'> ChatBit</span>
-          </h1>
+          <div className='flex flex-row justify-center w-full gap-3'>
+            <div className="avatar">
+              <div className="w-12">
+                <img src="./logo.png" />
+              </div>
+            </div>
+            <h1 className='text-4xl py-3 font-semibold text-center text-gray-300'>
+              <span className='text-yellow-400'> ChatBit</span>
+            </h1>
+          </div>
           <h2 className='text-lg py-4 font-semibold text-center text-gray-200'>
             User SignUp
           </h2>

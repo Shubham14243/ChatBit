@@ -2,7 +2,7 @@ import React from 'react';
 import useChat from '../../zustand/useChat';
 import { useSocketContext } from '../../context/SocketContext';
 
-const Chatitem = ({data, lastIdx}) => {
+const Chatitem = ({data, lastIdx, setViewProfile}) => {
     
     const {selectedChat, setSelectedChat} = useChat();
     const isSelected = selectedChat?._id === data._id;
@@ -14,7 +14,7 @@ const Chatitem = ({data, lastIdx}) => {
             <div className={`flex gap-2 items-center text-gray-200 hover:bg-yellow-500 hover:text-gray-900 rounded p-2 py-1 cursor-pointer
                 ${isSelected? "bg-yellow-500 text-gray-900" : null}
                 `}
-                onClick={() => setSelectedChat(data)}
+                onClick={() => {setSelectedChat(data); setViewProfile(false);}}
                 >
                 <div className={`avatar ${isOnline ? "online": "offline"}`}>
                     <div className="w-12 rounded-xl">

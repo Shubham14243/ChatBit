@@ -3,7 +3,7 @@ import { RiLogoutBoxLine } from "react-icons/ri";
 import useLogout from '../../hooks/useLogout';
 import { useAuthContext } from '../../context/AuthContext';
 
-const Logoutbtn = () => {
+const Logoutbtn = ({ setViewProfile }) => {
 
     const { loading, logout } = useLogout();
     const { authUser } = useAuthContext();
@@ -11,7 +11,7 @@ const Logoutbtn = () => {
     return (
         <>
             <div className='flex flex-row justify-between items-center'>
-                <div className='flex flex-row gap-3 py-2 m-w-0.5'>
+                <div className='flex flex-row gap-3 px-2 py-2 m-w-0.5 hover:border-2 cursor-pointer rounded-md' onClick={() => { setViewProfile(true); }}>
                     <div className='w-8 rounded-full'>
                         <img src={authUser.picture} />
                     </div>

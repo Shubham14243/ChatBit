@@ -2,23 +2,24 @@ import React from 'react'
 import Chatitem from './Chatitem'
 import useGetChat from '../../hooks/useGetChat'
 
-const Chatlist = () => {
+const Chatlist = ({setViewProfile}) => {
   
   const {loading, chat} = useGetChat();
 
   return (
     <>
-      <div className='py-2 flex flex-col overflow-auto'>
+      <div className='py-2 min-h-[450px] flex flex-col overflow-auto'>
         {chat && chat.map((chatOne, idx) => {
           return(
             <Chatitem
             key={chatOne._id}
             data={chatOne}
             lastIdx={idx === chat.length - 1}
+            setViewProfile={setViewProfile}
           />
           )
         })}
-        {loading ? <span className="loading loading-infinity loading-lg text-warning"></span> : null}
+        {loading ? <div className='w-full text-center'><span className="loading loading-infinity loading-lg text-warning"></span></div> : null}
       </div>
     </>
   )
