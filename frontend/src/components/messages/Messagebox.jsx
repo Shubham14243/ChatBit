@@ -50,7 +50,7 @@ const NoChatSelected = () => {
             <span className='text-yellow-400'> ChatBit</span>
           </h1>
         </div>
-        <p>Hi! {authUser.name}.</p>
+        <p className='text-2xl'>Hi {authUser.name}!</p>
         <p className='label-text'>Select a Chat to start messaging!</p>
       </div>
     </div>

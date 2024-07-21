@@ -11,7 +11,7 @@ const Logoutbtn = ({ setViewProfile }) => {
     return (
         <>
             <div className='flex flex-row justify-between items-center'>
-                <div className='flex flex-row gap-3 px-2 py-2 m-w-0.5 hover:border-2 cursor-pointer rounded-md' onClick={() => { setViewProfile(true); }}>
+                <div className='flex flex-row gap-3 px-2 py-2 m-w-0.5 hover:bg-gray-600 cursor-pointer rounded-md' onClick={() => { setViewProfile(true); }}>
                     <div className='w-8 rounded-full'>
                         <img src={authUser.picture} />
                     </div>

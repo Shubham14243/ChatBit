@@ -12,12 +12,12 @@ const Signup = () => {
     gender: ''
   });
 
+  const { loading, signup } = useSignup();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     await signup(inputs);
   }
-
-  const { loading, signup } = useSignup();
 
   return (
     <>

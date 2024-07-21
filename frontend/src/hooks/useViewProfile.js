@@ -4,8 +4,6 @@ const useViewProfile = () => {
   
     const [viewProfile, setViewProfile] = useState(false);
 
-    console.log(viewProfile);
-
     return {viewProfile, setViewProfile};
 
 }
