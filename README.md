@@ -31,6 +31,14 @@ To run the chat application
   npm start
 ```
 
+Environment Vriables
+```bash
+  PORT=5000
+  MONGO_DB_URI=YOUR MONGODB URL
+  JWT_SECRET=ANY SECRET FOR JWT TOKEN
+  NODE_ENV=developement
+```
+
 
 ## Screenshots
 
