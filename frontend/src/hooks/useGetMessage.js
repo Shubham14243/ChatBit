@@ -14,7 +14,7 @@ const useGetMessage = () => {
             setLoading(true);
             try{
 
-                const res = await fetch(`http://localhost:5000/api/message/${selectedChat._id}`, {
+                const res = await fetch(`https://chatbit.onrender.com/api/message/${selectedChat._id}`, {
                     method: "GET",
                     headers: {
                         "Content-Type": "application/json"

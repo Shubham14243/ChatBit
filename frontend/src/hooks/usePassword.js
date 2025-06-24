@@ -15,7 +15,7 @@ const usePassword = () => {
                 return;
             }
 
-            const res = await fetch("http://localhost:5000/api/user/password/update", {
+            const res = await fetch("https://chatbit.onrender.com/api/user/password/update", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"

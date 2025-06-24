@@ -17,7 +17,7 @@ const useSendMessage = () => {
                 return;
             }
 
-            const res = await fetch(`http://localhost:5000/api/message/send/${selectedChat._id}`, {
+            const res = await fetch(`https://chatbit.onrender.com/api/message/send/${selectedChat._id}`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
