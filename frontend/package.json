@@ -11,7 +11,6 @@
   },
   "dependencies": {
     "autoprefixer": "^10.4.19",
-    "chatbit": "file:..",
     "postcss": "^8.4.39",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",

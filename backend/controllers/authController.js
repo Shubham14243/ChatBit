@@ -22,8 +22,8 @@ export const signup = async (req, res) => {
             });
         }
 
-        const boyPic = `https://avatar.iran.liara.run/public/boy?username=${email}`;
-        const girlPic = `https://avatar.iran.liara.run/public/girl?username=${email}`;
+        const boyPic = `https://api.dicebear.com/9.x/fun-emoji/svg?seed=${email}`;
+        const girlPic = `https://api.dicebear.com/9.x/fun-emoji/svg?seed=${email}`;
 
         const salt = await bcrypt.genSalt(8);
         const hashedPassword = await bcrypt.hash(password, salt);
